@@ -1,0 +1,9 @@
+{
+  "name": "ShinyBob",
+  "version": "0.14.6",
+  "factorio_version": "0.14",
+  "title": "ShinyBob",
+  "author": "qjm123/Qumojo and Inequalitix",
+  "dependencies": [ "base >= 0.13.0", "boblibrary >= 0.13.0", "bobconfig >= 0.13.0", "? bobassembly >= 0.13.0", "? bobelectronics >= 0.13.0", "? bobenemies >= 0.13.0", "? boblogistics >= 0.13.0", "? bobmining >= 0.13.0", "? bobmodules >= 0.13.0", "? bobores >= 0.13.0", "? bobplates >= 0.13.0", "? bobpower >= 0.13.0", "? bobtech >= 0.13.0", "? bobwarfare >= 0.13.0", "? bobgreenhouse >= 0.13.0"],
+  "description": "Far better graphics for Bob's mods by qjm123/Qumojo. Graphics compression by Inequalitix."
+}

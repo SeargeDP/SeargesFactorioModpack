@@ -4,7 +4,7 @@ simpleMode=false
 
 -- Removes some military techs that have no use in a peace mod. The shotgun is kept for its tree clearing abilities. Rocket defense is also kept to keep endgame possible.
 -- Allow flame thrower for tree clearing.
-removeMilitaryTech=true
+removeMilitaryTech=false
 
 -- Allows enemies to spawn. But this is a peace mod no?
 enemiesSpawn=false

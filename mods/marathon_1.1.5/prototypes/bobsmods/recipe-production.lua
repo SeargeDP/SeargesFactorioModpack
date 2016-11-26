@@ -2,8 +2,8 @@ Recipe.select('air-pump').apply('energy_required', 5).ingredients =
 {
 	{type="item", name="iron-plate", amount=10},
 	{type="item", name="iron-gear-wheel", amount=10},
-	{type="item", name="electronic-circuit", amount=10},
-	{type="item", name="pipe", amount=10},
+	{type="item", name="electronic-circuit", amount=5},
+	{type="item", name="pipe", amount=5},
 }
 
 Recipe.select('air-pump-2').ingredients =
@@ -15,12 +15,30 @@ Recipe.select('air-pump-2').ingredients =
 	{type="item", name="pipe", amount=6},
 }
 
+Recipe.select('air-pump-3').ingredients =
+{
+	{type="item", name="air-pump-2", amount=1},
+	{type="item", name="invar-alloy", amount=10},
+	{type="item", name="brass-gear-wheel", amount=10},
+	{type="item", name="processing-unit", amount=8},
+	{type="item", name="pipe", amount=6},
+}
+
+Recipe.select('air-pump-4').ingredients =
+{
+	{type="item", name="air-pump-3", amount=1},
+	{type="item", name="tungsten-plate", amount=10},
+	{type="item", name="nitinol-gear-wheel", amount=10},
+	{type="item", name="advanced-processing-unit", amount=8},
+	{type="item", name="pipe", amount=6},
+}
+
 Recipe.select('chemical-plant').ingredients =
 {
-	{type="item", name="steel-plate", amount=20},
-	{type="item", name="iron-gear-wheel", amount=30},
-	{type="item", name="electronic-circuit", amount=10},
-	{type="item", name="pipe", amount=15},
+	{type="item", name="steel-plate", amount=10},
+	{type="item", name="iron-gear-wheel", amount=10},
+	{type="item", name="electronic-circuit", amount=5},
+	{type="item", name="pipe", amount=10},
 }
 
 if data.raw.item['steel-bearing'] and data.raw.item['steel-gear-wheel'] and data.raw.item['glass'] then
@@ -28,12 +46,32 @@ if data.raw.item['steel-bearing'] and data.raw.item['steel-gear-wheel'] and data
 	{
 		{type="item", name="chemical-plant", amount=1},
 		{type="item", name="glass", amount=15},
-		{type="item", name="steel-bearing", amount=30},
-		{type="item", name="steel-gear-wheel", amount=15},
-		{type="item", name="advanced-circuit", amount=8},
+		{type="item", name="steel-bearing", amount=10},
+		{type="item", name="steel-gear-wheel", amount=10},
+		{type="item", name="advanced-circuit", amount=10},
 		{type="item", name="pipe", amount=10},
 	}
 end
+
+Recipe.select('chemical-plant-3').ingredients =
+{
+	{type="item", name="chemical-plant-2", amount=1},
+	{type="item", name="glass", amount=25},
+	{type="item", name="ceramic-bearing", amount=10},
+	{type="item", name="nitinol-gear-wheel", amount=10},
+	{type="item", name="processing-unit", amount=10},
+	{type="item", name="pipe", amount=10},
+}
+
+Recipe.select('chemical-plant-4').ingredients =
+{
+	{type="item", name="chemical-plant-3", amount=1},
+	{type="item", name="glass", amount=50},
+	{type="item", name="nitinol-bearing", amount=10},
+	{type="item", name="tungsten-gear-wheel", amount=10},
+	{type="item", name="advanced-processing-unit", amount=10},
+	{type="item", name="pipe", amount=10},
+}
 
 Recipe.select('electrolyser').ingredients =
 {
@@ -46,33 +84,69 @@ Recipe.select('electrolyser-2').ingredients =
 {
 	{type="item", name="electrolyser", amount=1},
 	{type="item", name="glass", amount=15},
-	{type="item", name="steel-plate", amount=30},
+	{type="item", name="steel-plate", amount=20},
 	{type="item", name="advanced-circuit", amount=8},
+	{type="item", name="pipe", amount=10},
+}
+
+Recipe.select('electrolyser-3').ingredients =
+{
+	{type="item", name="electrolyser-2", amount=1},
+	{type="item", name="glass", amount=25},
+	{type="item", name="titanium-plate", amount=20},
+	{type="item", name="processing-unit", amount=8},
+	{type="item", name="pipe", amount=10},
+}
+
+Recipe.select('electrolyser-4').ingredients =
+{
+	{type="item", name="electrolyser-3", amount=1},
+	{type="item", name="glass", amount=50},
+	{type="item", name="tungsten-plate", amount=20},
+	{type="item", name="advanced-processing-unit", amount=8},
 	{type="item", name="pipe", amount=10},
 }
 
 Recipe.select('water-pump').apply('energy_required', 7).ingredients =
 {
-	{type="item", name="iron-plate", amount=10},
-	{type="item", name="iron-gear-wheel", amount=15},
-	{type="item", name="electronic-circuit", amount=10},
-	{type="item", name="pipe", amount=20},
+	{type="item", name="iron-plate", amount=5},
+	{type="item", name="iron-gear-wheel", amount=5},
+	{type="item", name="electronic-circuit", amount=5},
+	{type="item", name="pipe", amount=10},
 }
 
 Recipe.select('water-pump-2').ingredients =
 {
 	{type="item", name="water-pump", amount=1},
-	{type="item", name="steel-plate", amount=10},
-	{type="item", name="steel-gear-wheel", amount=10},
+	{type="item", name="steel-plate", amount=5},
+	{type="item", name="steel-gear-wheel", amount=5},
 	{type="item", name="advanced-circuit", amount=8},
-	{type="item", name="pipe", amount=15},
+	{type="item", name="pipe", amount=10},
+}
+
+Recipe.select('water-pump-3').ingredients =
+{
+	{type="item", name="water-pump", amount=1},
+	{type="item", name="invar-alloy", amount=5},
+	{type="item", name="brass-gear-wheel", amount=5},
+	{type="item", name="processing-unit", amount=8},
+	{type="item", name="pipe", amount=10},
+}
+
+Recipe.select('water-pump-4').ingredients =
+{
+	{type="item", name="water-pump", amount=1},
+	{type="item", name="tungsten-plate", amount=5},
+	{type="item", name="nitinol-gear-wheel", amount=5},
+	{type="item", name="advanced-processing-unit", amount=8},
+	{type="item", name="pipe", amount=10},
 }
 
 Recipe.select('void-pump').ingredients =
 {
-	{type="item", name="iron-plate", amount=10},
-	{type="item", name="iron-gear-wheel", amount=15},
-	{type="item", name="electronic-circuit", amount=10},
+	{type="item", name="iron-plate", amount=5},
+	{type="item", name="iron-gear-wheel", amount=5},
+	{type="item", name="electronic-circuit", amount=5},
 	{type="item", name="pipe", amount=10},
 }
 
@@ -92,6 +166,10 @@ if data.raw.item["plastic-pipe"] then
 	Recipe.select('electrolyser-2:ingredients:pipe').name = 'plastic-pipe'
 end
 
+if data.raw.item["ceramic-pipe"] then
+	Recipe.select('electrolyser-3:ingredients:pipe').name = 'ceramic-pipe'
+end
+
 if data.raw.item["copper-pipe"] then
 	Recipe.select('air-pump:ingredients:pipe').name = 'copper-pipe'
 	Recipe.select('water-pump:ingredients:pipe').name = 'copper-pipe'
@@ -101,4 +179,20 @@ end
 if data.raw.item["bronze-pipe"] then
 	Recipe.select('air-pump-2:ingredients:pipe').name = 'bronze-pipe'
 	Recipe.select('water-pump-2:ingredients:pipe').name = 'bronze-pipe'
+end
+
+if data.raw.item["brass-pipe"] then
+	Recipe.select('air-pump-3:ingredients:pipe').name = 'brass-pipe'
+	Recipe.select('water-pump-3:ingredients:pipe').name = 'brass-pipe'
+end
+
+if data.raw.item["titanium-pipe"] then
+	Recipe.select('chemical-plant-3:ingredients:pipe').name = 'titanium-pipe'
+	Recipe.select('electrolyser-4:ingredients:pipe').name = 'titanium-pipe'
+	Recipe.select('air-pump-4:ingredients:pipe').name = 'titanium-pipe'
+	Recipe.select('water-pump-4:ingredients:pipe').name = 'titanium-pipe'
+end
+
+if data.raw.item["tungsten-pipe"] then
+	Recipe.select('chemical-plant-4:ingredients:pipe').name = 'tungsten-pipe'
 end

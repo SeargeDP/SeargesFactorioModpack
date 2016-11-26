@@ -1,0 +1,14 @@
+/archive/
+/backups/
+/bin/
+/config/
+/data/
+/doc-html/
+/saves/
+/script-output/
+/temp/
+/tests/
+/*.cfg
+/*.dat
+/*.json
+/*.log

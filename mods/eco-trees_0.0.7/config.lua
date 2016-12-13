@@ -1,9 +1,9 @@
 ----Pollution Clean Factor----
-EmissionsFactor = 10  --Defualt 10
+EmissionsFactor = 5  --Defualt 10
 --put a negative number ex:-100 to make trees produce pollution.
 
 ----Tree Collision Fix----
-TreeCollision = true  --Defualt true
+TreeCollision = false  --Defualt true
 --This makes it easyer to walk through forest.
 
 ----Tree Loot----

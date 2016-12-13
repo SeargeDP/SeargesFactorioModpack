@@ -351,18 +351,18 @@ script.on_event(defines.events.on_tick, function(event)
   if game.tick % 20 == 0 then
     if global and global.bobmods and global.bobmods.inserters then
       for index, player in pairs(game.connected_players) do
-        if global.bobmods.inserters[index] then
-          local entity = global.bobmods.inserters[index].entity
+        if global.bobmods.inserters[player.index] then
+          local entity = global.bobmods.inserters[player.index].entity
           if entity and (not entity.valid or not player.can_reach_entity(entity)) then
-            bobmods.inserters.delete_gui(index)
+            bobmods.inserters.delete_gui(player.index)
           end
         else
-          bobmods.inserters.create_global_table(index) -- Create for this specific online player.
+          bobmods.inserters.create_global_table(player.index) -- Create for this specific online player.
         end
       end
     else
       for index, player in pairs(game.players) do -- Create for all if there are none.
-        bobmods.inserters.create_global_table(index)
+        bobmods.inserters.create_global_table(player.index)
       end
     end
   end

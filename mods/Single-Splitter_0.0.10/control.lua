@@ -27,7 +27,7 @@ function OnPlayerRotatedEntity(_Event)
     if IsSingleSplitter(_Event.entity) then
         local _Splitter = _Event.entity
         for key,value in pairs(global.SingleSplitter) do 
-            if value.pos.x == _Splitter.position.x and value.pos.y == _Splitter.position.y then
+            if value.pos.x == _Splitter.position.x and value.pos.y == _Splitter.position.y and _Splitter.surface == (value.surface or game.surfaces[1]) then
                 value.dir = _Splitter.direction
                 value.cachedInBelt = nil
                 value.cachedOutBelt = nil
@@ -71,7 +71,8 @@ function GetSplitterInBelt(Splitter)
         inBelt = nil
 		
         local scanArea = GetScanArea(Splitter.dir, Splitter.pos)
-        local belt = game.surfaces[1].find_entities_filtered({	type="transport-belt", area = scanArea})
+        local _surface = Splitter.surface or game.surfaces[1]
+        local belt = _surface.find_entities_filtered({	type="transport-belt", area = scanArea})
         if belt[1] ~= nil and belt[1].direction == Splitter.dir then			
             inBelt = belt[1]
             Splitter.cachedInBelt = inBelt
@@ -89,7 +90,8 @@ function GetSplitterOutBelt(Splitter)
         local facing_directions = {[north] = south, [east] = west, [south] = north, [west] = east}
         local scanArea = GetScanArea(facing_directions[Splitter.dir], Splitter.pos)
     
-        local belt = game.surfaces[1].find_entities_filtered({	type="transport-belt", area = scanArea})
+        local _surface = Splitter.surface or game.surfaces[1]
+        local belt = _surface.find_entities_filtered({	type="transport-belt", area = scanArea})
         if belt[1] ~= nil and belt[1].direction == Splitter.dir then			
             outBelt = belt[1]
             Splitter.cachedOutBelt = outBelt
@@ -186,14 +188,15 @@ end
 function AddSingleSplitter(_Splitter)
     local _Position = _Splitter.position
     local _Direction = _Splitter.direction		
+    local _Surface = _Splitter.surface
 
-    local set = {pos = _Position, dir = _Direction, lastInSide = 1, lastOut = {1,2} }		
+    local set = {pos = _Position, dir = _Direction, lastInSide = 1, lastOut = {1,2}, surface = _Surface }
     AddSet(set)	
 end
 
 function RemoveSingleSplitter(_Splitter)		
     for key,value in pairs(global.SingleSplitter) do 
-        if value.pos.x == _Splitter.position.x and value.pos.y == _Splitter.position.y then
+        if value.pos.x == _Splitter.position.x and value.pos.y == _Splitter.position.y and _Splitter.surface == (value.surface or game.surfaces[1]) then
             table.remove(global.SingleSplitter, key)
             break
         end 

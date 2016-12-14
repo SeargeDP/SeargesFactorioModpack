@@ -30,6 +30,8 @@ local function debug(str)
 	end
 end
 
+local disableEventHandler = false
+
 -- constants
 local CHUNK_SIZE = 32
 local REGION_TILE_SIZE = CHUNK_SIZE*region_size
@@ -1572,6 +1574,10 @@ local function init()
 		
 		checkForBobEnemies()
 		
+		if disableEventHandler then
+			script.on_event(defines.events.on_chunk_generated, nil)
+		end
+		
 		initDone = true
 	end
 	
@@ -1585,8 +1591,7 @@ end
 --script.on_init(delayedInit) - no longer required
 script.on_load(delayedInit)
 
-script.on_event(defines.events.on_chunk_generated, function(event)
-	
+local function localGenerateChunk( event )
 	--changes by xiaoHong - ignore surfaces interface - 11/29/2015
 	if global.ignoreSurfaceNames and global.ignoreSurfaceNames[event.surface.name] then
 		return
@@ -1604,7 +1609,10 @@ script.on_event(defines.events.on_chunk_generated, function(event)
 	if useStraightWorldMod then		
 		straightWorld(event.surface, event.area.left_top, event.area.right_bottom)
 	end
-end)
+end
+
+script.on_event(defines.events.on_chunk_generated, localGenerateChunk)
+
 
 script.on_event(defines.events.on_player_created, function(event)
 	
@@ -1720,7 +1728,14 @@ remote.add_interface("RSO", {
 		
 	saveLog = function()
 		l:dump()
+	end,
+	
+	disableChunkHandler = function()
+		disableEventHandler = true
+		script.on_event(defines.events.on_chunk_generated, nil)
+	end,
+	
+	generateChunk = function(event)
+		localGenerateChunk(event)
 	end
 })
-
-

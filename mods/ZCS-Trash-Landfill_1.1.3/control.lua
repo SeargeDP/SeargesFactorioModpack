@@ -8,6 +8,38 @@ function debug_print()
 	end
 end
 
+function debug_print_file()
+	local printstring = "Landfill List:\n"
+	for i,landfill in pairs(global.zcs.landfills) do
+		printstring = printstring .. i .. " Position X: " .. landfill.position.x .. " Position Y: " .. landfill.position.y .. "\n"
+	end
+	printstring = printstring .. "\nItem List:\n"
+	for i, entry in pairs(global.zcs.items) do
+		local item = entry[1][1]
+		local landfill = "Position X: " .. entry[1][2].position.x .. " Position Y: " .. entry[1][2].position.y
+		local amount = entry[2][1]
+		local length = entry[2][2]
+		printstring = printstring .. "Item: " .. item .. " Landfill[" .. landfill .. "] Amount: " .. amount .. " Length: " .. length .. "\n"
+	end
+	game.write_file("itemlist.log", printstring)
+end
+
+function empty_landfills()
+	global.zcs = global.zcs or {}
+	global.zcs.landfills = global.zcs.landfills or {}
+	global.zcs.items = {}
+	for _,landfill in pairs(global.zcs.landfills) do
+		local total = 0
+		for _,amount in pairs(landfill.get_inventory(defines.inventory.chest).get_contents()) do
+			total = total + amount
+		end
+		landfill.surface.pollute(landfill.position, total * 5)
+		landfill.get_inventory(defines.inventory.chest).clear()
+	end
+end
+
+remote.add_interface("zcs-debug", {debug_print = debug_print, debug_print_file = debug_print_file, empty_landfills = empty_landfills})
+
 function item_check(landfill)
 	local inventory = landfill.get_inventory(defines.inventory.chest).get_contents()
 	for item, amount in pairs(inventory) do
@@ -38,7 +70,9 @@ function item_check(landfill)
 end
 
 function delete_check()
+	--debug_print_file()
 	for i, entry in pairs(global.zcs.items) do
+		local present = false
 		if entry[1][2] ~= nil and entry[1][2].valid then
 			--game.players[1].print("DEBUG: Checking Item: " .. entry[1][1] .. " Amount: " .. entry[2][1])
 			--item = entry[1][1]
@@ -46,7 +80,7 @@ function delete_check()
 			--amount = entry[2][1]
 			--length = entry[2][2]
 			for item, amount in pairs(entry[1][2].get_inventory(defines.inventory.chest).get_contents()) do
-				if entry[1][1] == item then
+				if entry[1][1] == item and amount > 0 then
 					--game.players[1].print("DEBUG: Item still in landfill.")
 					present = true
 					break
@@ -106,6 +140,8 @@ script.on_init(function()
 	global.zcs.landfills = global.zcs.landfills or {}
 	global.zcs.items = global.zcs.items or {}
 end)
+
+script.on_configuration_changed(empty_landfills)
 
 script.on_event(defines.events.on_tick, landfill_check)
 script.on_event(defines.events.on_built_entity, landfill_built)

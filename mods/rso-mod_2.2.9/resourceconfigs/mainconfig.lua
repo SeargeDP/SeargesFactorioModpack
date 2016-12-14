@@ -30,6 +30,7 @@ require("resourceconfigs.senpais")
 require("resourceconfigs.beyond")
 require("resourceconfigs.andrew")
 require("resourceconfigs.bukket")
+require("resourceconfigs.infinium")
 
 
 function loadResourceConfig()
@@ -182,6 +183,10 @@ function loadResourceConfig()
 	
 	if game.active_mods["Beyond"] then
 		fillBeyondConfig()
+	end
+	
+	if game.active_mods["infinium-ore"] then
+		fillInfiniumConfig()
 	end
 
 	return config

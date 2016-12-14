@@ -6,7 +6,7 @@ region_size = 7	-- alternative mean to control how further away resources would 
 				-- each region is region_size*region_size chunks
 				-- each chunk is 32*32 tiles
 
-use_donut_shapes = false		-- setting this to false will remove donuts from possible resource layouts
+use_donut_shapes = false			-- setting this to false will remove donuts from possible resource layouts
 
 starting_area_size = 1         	-- starting area in regions, safe from random nonsense
 

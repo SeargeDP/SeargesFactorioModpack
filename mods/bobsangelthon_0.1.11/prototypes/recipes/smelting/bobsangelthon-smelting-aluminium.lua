@@ -73,8 +73,7 @@ bam.edit_recipe({
     name = "molten-aluminium-smelting",
     energy_required = 8,
     ingredients ={
-      {type="item", name="ingot-aluminium", amount=2},
-      {type="item", name="ingot-manganese", amount=1},
+      {type="item", name="ingot-aluminium", amount=3},
 	},
     results=
     {

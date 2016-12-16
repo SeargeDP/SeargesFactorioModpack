@@ -93,7 +93,7 @@ function on_robot_built_entity(event)
 	local entity = event.entity
 	local player = event.robot.last_user
 	
-	if entity.name == "personal-spawn-marker" then
+	if entity and entity.name == "personal-spawn-marker" then
 		if HasValidSpawn(player) then
 			entity.destroy()
 		else

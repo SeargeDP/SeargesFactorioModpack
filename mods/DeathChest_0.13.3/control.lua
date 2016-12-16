@@ -24,12 +24,14 @@ end
 function on_player_died(event)
 	local player = game.players[event.player_index]
 	
-	--[[local quickBar = player.get_inventory(1)
-	local main = player.get_inventory(2)
+	--[[local main = player.get_inventory(1)
+	local quickBar = player.get_inventory(2)
 	local gun = player.get_inventory(3)
 	local ammo = player.get_inventory(4)
 	local armor = player.get_inventory(5)
 	local tool = player.get_inventory(6)
+	vehicle = 7, tested nil always
+	trash = 8, logistics trash waiting to be picked up by robot
 	
 	local invs = {quickBar, main, tool}]]--
 	
@@ -45,21 +47,26 @@ function on_player_died(event)
 		force = game.forces.neutral
 	})
 	
-	chest.destructible = false
-	
 	local inserted = 0
 	local chestIndex = 1
 	
+	--first cancel any pending crafting to dump items back into inventory
+	while game.player.crafting_queue_size > 0 do 
+		game.player.cancel_crafting(game.player.crafting_queue[#game.player.crafting_queue])
+	end
+
 	if chest ~= nil then
-		for i = 1, 6 do
+		chest.destructible = false
+		local chestInv = chest.get_inventory(1)
+	
+		for i = 1, 8 do
 			local inv = player.get_inventory(i)
 			
 			if inv ~= nil then
 				
-				local chestInv = chest.get_inventory(1)
 				for I = 1, #inv, 1 do
 				
-					if inserted > 98 or chestIndex > 98 then
+					if inserted > 500 or chestIndex > 500 then
 						break
 					end
 					

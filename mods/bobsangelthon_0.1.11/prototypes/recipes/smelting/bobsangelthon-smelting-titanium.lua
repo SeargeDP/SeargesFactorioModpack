@@ -64,7 +64,7 @@ bam.edit_recipe({
     energy_required = 12,
     ingredients ={
       {type="fluid", name="liquid-titanium-tetrachloride", amount=4},
-      {type="item", name="ingot-manganese", amount=2},
+      {type="item", name="rutile-ore", amount=2},
 	},
     results=
     {

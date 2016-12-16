@@ -73,6 +73,10 @@
             "enabled": "true"
         },
         {
+            "name": "Long_Underground_Pipes",
+            "enabled": "true"
+        },
+        {
             "name": "manual-inventory-sort",
             "enabled": "true"
         },
